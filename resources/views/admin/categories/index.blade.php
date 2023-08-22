@@ -41,7 +41,7 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>{{ __('Title') }}</th>
-                                        <th>{{ __('Actions') }}</th>
+                                        <th colspan="2">{{ __('Actions') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -52,6 +52,11 @@
                                             <td>
                                                 <a href="{{ route('categories.show', $category) }}">
                                                     <i class="far fa-eye"></i>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a href="{{ route('categories.edit', $category) }}">
+                                                    <i class="fas fa-pencil-alt"></i>
                                                 </a>
                                             </td>
                                         </tr>
