@@ -28,8 +28,8 @@ Route::prefix('admin')->group(function() {
     Route::get('/', [AdminController::class, 'index'])->name('admin.index');
 });
 
-Route::prefix('categories')->group(function() {
-    Route::get('/', [CategoriesController::class, 'index'])->name('categories.index');
-});
+
+Route::resource('categories', CategoriesController::class);
+
 
 

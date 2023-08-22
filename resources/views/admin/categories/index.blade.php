@@ -28,6 +28,9 @@
         <!-- Small boxes (Stat box) -->
             <div class="row">
                 <div class="col-12">
+                    <button type="button" class="btn btn-block btn-primary">Добавить</button>
+                </div>
+                <div class="col-12">
                     {{ __('Categories') }}
                 </div>
             </div>
