@@ -8,8 +8,18 @@
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
-                <div class="col-sm-6">
+                <div class="col-sm-6 d-flex">
                     <h1 class="m-0">{{ $category->title }}</h1>
+                    <a href="{{ route('categories.edit', $category) }}" class="ml-3 pt-1">
+                        <i class="fas fa-pencil-alt"></i>
+                    </a>
+                    <form action="{{ route('categories.destroy', $category) }}" method="POST" class="ml-3 pt-1">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="border-0 bg-white">
+                            <i class="fas fa-trash text-danger" role="button"></i>
+                        </button>
+                    </form>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">

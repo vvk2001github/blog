@@ -41,7 +41,7 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>{{ __('Title') }}</th>
-                                        <th colspan="2">{{ __('Actions') }}</th>
+                                        <th colspan="3" class="text-center">{{ __('Actions') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -49,15 +49,24 @@
                                         <tr>
                                             <td>{{ $category->id }}</td>
                                             <td>{{ $category->title }}</td>
-                                            <td>
+                                            <td class="text-center">
                                                 <a href="{{ route('categories.show', $category) }}">
                                                     <i class="far fa-eye"></i>
                                                 </a>
                                             </td>
-                                            <td>
+                                            <td class="text-center">
                                                 <a href="{{ route('categories.edit', $category) }}">
                                                     <i class="fas fa-pencil-alt"></i>
                                                 </a>
+                                            </td>
+                                            <td class="text-center">
+                                                <form action="{{ route('categories.destroy', $category) }}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="border-0 bg-white">
+                                                        <i class="fas fa-trash text-danger" role="button"></i>
+                                                    </button>
+                                                </form>
                                             </td>
                                         </tr>
                                     @endforeach
