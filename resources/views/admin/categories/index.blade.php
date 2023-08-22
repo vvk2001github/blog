@@ -41,6 +41,7 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>{{ __('Title') }}</th>
+                                        <th>{{ __('Actions') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -48,6 +49,11 @@
                                         <tr>
                                             <td>{{ $category->id }}</td>
                                             <td>{{ $category->title }}</td>
+                                            <td>
+                                                <a href="{{ route('categories.show', $category) }}">
+                                                    <i class="far fa-eye"></i>
+                                                </a>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>

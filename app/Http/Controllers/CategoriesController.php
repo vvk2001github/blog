@@ -43,9 +43,9 @@ class CategoriesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Category $category): View
     {
-        //
+        return view('admin.categories.show', compact('category'));
     }
 
     /**
