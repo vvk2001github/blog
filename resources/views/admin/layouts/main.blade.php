@@ -92,6 +92,24 @@
 <!-- AdminLTE App -->
 <script src="{{ asset('adminlte/dist/js/adminlte.js') }}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="{{ asset('adminlte/dist/js/pages/dashboard.js') }}"></script>
+{{-- <script src="{{ asset('adminlte/dist/js/pages/dashboard.js') }}"></script> --}}
+<script>
+    $(function () {
+        // Summernote
+        $('#summernote').summernote(
+            {
+                toolbar: [
+                    // [groupName, [list of button]]
+                    ['style', ['bold', 'italic', 'underline', 'clear']],
+                    ['font', ['strikethrough', 'superscript', 'subscript']],
+                    ['fontsize', ['fontsize']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['height', ['height']]
+                ]
+            }
+        );
+    });
+</script>
 </body>
 </html>
