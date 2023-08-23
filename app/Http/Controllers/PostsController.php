@@ -49,8 +49,8 @@ class PostsController extends Controller
         $tag_ids = $data['tag_ids'];
         unset($data['tag_ids']);
 
-        $data['preview_image'] = Storage::put('/images', $data['preview_image']);
-        $data['main_image'] = Storage::put('/images', $data['main_image']);
+        $data['preview_image'] = Storage::disk('public')->put('/images', $data['preview_image']);
+        $data['main_image'] = Storage::disk('public')->put('/images', $data['main_image']);
         $data['user_id'] = auth()->user()->id;
 
         $post = Post::firstOrCreate($data);
@@ -72,7 +72,9 @@ class PostsController extends Controller
      */
     public function edit(Post $post): View
     {
-        return view('admin.posts.edit', compact('post'));
+        $categories = Category::all();
+        $tags = Tag::all();
+        return view('admin.posts.edit', compact('post', 'categories', 'tags'));
     }
 
     /**

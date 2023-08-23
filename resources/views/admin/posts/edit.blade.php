@@ -29,12 +29,64 @@
             <div class="row">
                 <div class="col-12">
 
-                    <form action="{{ route('posts.update', $post) }}" class="w-25" method="POST">
+                    <form action="{{ route('posts.update', $post) }}" method="POST" enctype="multipart/form-data">
                         @method('PUT')
                         @csrf
-                        <div class="form-group">
+                        <div class="form-group w-25">
                             <label for="title">{{ __('Title') }}</label>
-                            <input type="text" class="form-control" id="title" name="title" placeholder="{{ __('Enter title') }}" value="{{ old('title') ? old('title') : $post->title }}">
+                            <input type="text" class="form-control" id="title" name="title" placeholder="{{ __('Enter title') }}" value="{{ $post->title }}">
+                        </div>
+                        <div class="form-group">
+                            <textarea name="content" id="summernote">{{ $post->content }}</textarea>
+                        </div>
+
+                        <div class="form-group w-50">
+                            <label for="preview_image">{{ __('Add preview') }}</label>
+                            <div class="w-50">
+                                <img src="{{ Storage::disk('public')->url($post->preview_image) }}" alt="{{ __('Preview image') }}" class="w-50">
+                            </div>
+                            <div class="input-group">
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="preview_image" name="preview_image">
+                                    <label class="custom-file-label" for="preview_image">{{ __('Choose image') }}</label>
+                                </div>
+                                <div class="input-group-append">
+                                    <span class="input-group-text">{{ __('Upload') }}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group w-50">
+                            <label for="main_image">{{ __('Add main image') }}</label>
+                            <div class="input-group">
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="main_image" name="main_image">
+                                    <label class="custom-file-label" for="main_image">{{ __('Choose image') }}</label>
+                                </div>
+                                <div class="input-group-append">
+                                    <span class="input-group-text">{{ __('Upload') }}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group w-50">
+                            <label>{{ __('Choose category') }}</label>
+                            <select class="form-control" name="category_id">
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category->id }}"
+                                        {{ $category->id == old('category_id') ? ' selected ' : '' }}
+                                        >{{ $category->title }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>{{ __('Tags') }}</label>
+                            <select class="select2" name="tag_ids[]" multiple="multiple" data-placeholder="{{ __('Choose tags') }}" style="width: 100%;">
+                                @foreach ($tags as $tag)
+                                    <option {{ is_array(old('tag_ids')) && in_array($tag->id, old('tag_ids')) ? ' selected ' : '' }} value="{{ $tag->id }}">{{ $tag->title }}</option>
+                                @endforeach
+                            </select>
                         </div>
 
                         @if ($errors->any())
@@ -46,8 +98,9 @@
                                 </ul>
                             </div>
                         @endif
-
-                        <input type="submit" class="btn btn-primary" value="{{ __("Update") }}">
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-primary" value="{{ __("Add") }}">
+                        </div>
                     </form>
                 </div>
             </div>
