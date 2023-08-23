@@ -183,6 +183,8 @@ return [
     'attributes' => [
         'title' => 'Заголовок',
         'content' => 'Содержимое',
+        'main_image' => 'Главное изображение',
+        'preview_image' => 'Превью',
     ],
 
 ];
