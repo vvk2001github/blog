@@ -71,6 +71,8 @@
 </script>
 <!-- Bootstrap 4 -->
 <script src="{{ asset('adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<!-- bs-custom-file-input -->
+<script src="{{ asset('adminlte/plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
 <!-- ChartJS -->
 <script src="{{ asset('adminlte/plugins/chart.js/Chart.min.js') }}"></script>
 <!-- Sparkline -->
@@ -109,6 +111,8 @@
                 ]
             }
         );
+
+        bsCustomFileInput.init();
     });
 </script>
 </body>

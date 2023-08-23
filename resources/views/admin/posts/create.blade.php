@@ -29,7 +29,7 @@
             <div class="row">
                 <div class="col-12">
 
-                    <form action="{{ route('posts.store') }}" method="POST">
+                    <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group w-25">
                             <label for="title">{{ __('Title') }}</label>
@@ -38,6 +38,33 @@
                         <div class="form-group">
                             <textarea name="content" id="summernote">{{ old('content') }}</textarea>
                         </div>
+
+                        <div class="form-group w-50">
+                            <label for="preview_image">{{ __('Add preview') }}</label>
+                            <div class="input-group">
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="preview_image" name="preview_image">
+                                    <label class="custom-file-label" for="preview_image">{{ __('Choose image') }}</label>
+                                </div>
+                                <div class="input-group-append">
+                                    <span class="input-group-text">{{ __('Upload') }}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group w-50">
+                            <label for="main_image">{{ __('Add main image') }}</label>
+                            <div class="input-group">
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="main_image" name="main_image">
+                                    <label class="custom-file-label" for="main_image">{{ __('Choose image') }}</label>
+                                </div>
+                                <div class="input-group-append">
+                                    <span class="input-group-text">{{ __('Upload') }}</span>
+                                </div>
+                            </div>
+                        </div>
+
                         @if ($errors->any())
                             <div class="alert alert-danger">
                                 <ul>
