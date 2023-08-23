@@ -14,12 +14,14 @@ class CategoriesController extends Controller
     {
         $this->middleware('auth');
     }
+
     /**
      * Display a listing of the resource.
      */
     public function index(): View
     {
         $categories = Category::all();
+
         return view('admin.categories.index', compact('categories'));
     }
 
@@ -38,6 +40,7 @@ class CategoriesController extends Controller
     {
         $data = $request->validated();
         Category::firstOrCreate($data);
+
         return redirect()->route('categories.index');
     }
 
@@ -52,7 +55,7 @@ class CategoriesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Category $category):View
+    public function edit(Category $category): View
     {
         return view('admin.categories.edit', compact('category'));
     }
@@ -64,6 +67,7 @@ class CategoriesController extends Controller
     {
         $data = $request->validated();
         $category->update($data);
+
         return redirect()->route('categories.show', compact('category'));
     }
 
@@ -73,6 +77,7 @@ class CategoriesController extends Controller
     public function destroy(Category $category): RedirectResponse
     {
         $category->delete();
+
         return redirect()->route('categories.index');
     }
 }
