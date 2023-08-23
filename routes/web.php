@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\PostsController;
 use App\Http\Controllers\TagsController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -28,4 +29,5 @@ Route::prefix('admin')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin.index');
     Route::resource('categories', CategoriesController::class);
     Route::resource('tags', TagsController::class);
+    Route::resource('posts', PostsController::class);
 });

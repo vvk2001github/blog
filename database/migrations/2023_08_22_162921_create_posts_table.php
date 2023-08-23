@@ -18,11 +18,12 @@ return new class extends Migration
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
             $table->foreignId('category_id')
-                ->constrained()
-                ->nullable();
+                ->nullable()
+                ->constrained();
             $table->string('title');
-            $table->text('content');
+            $table->text('content')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
