@@ -7,6 +7,7 @@
     "Adding a category": "Добавление категории",
     "Adding a post": "Добавление поста",
     "Adding a tag": "Добавление тэга",
+    "Adding a user": "Добавление пользователя",
     "Browse": "Обзор",
     "Categories": "Категории",
     "Choose image": "Выберите изображение",
@@ -16,12 +17,19 @@
     "Editing a category": "Редактирование категории",
     "Editing a tag": "Редактирование тэга",
     "Editing a post": "Редактирование поста",
+    "Email": "Почта",
+    "Enter email": "Введите почту",
+    "Enter password": "Введите пароль",
+    "Enter username": "Введите имя пользователя",
     "Login": "Войти",
+    "Name": "Имя",
+    "Password": "Пароль",
     "Posts": "Посты",
     "Register": "Регистрация",
     "Tags": "Тэги",
     "Title": "Заголовок",
     "title": "Заголовок",
     "Update": "Обновить",
-    "Upload": "Загрузить"
+    "Upload": "Загрузить",
+    "Users": "Пользователи"
 }
