@@ -42,7 +42,7 @@
 
                         <div class="form-group w-50">
                             <label for="preview_image">{{ __('Add preview') }}</label>
-                            <div class="w-50">
+                            <div class="w-25 mb-2">
                                 <img src="{{ Storage::disk('public')->url($post->preview_image) }}" alt="{{ __('Preview image') }}" class="w-50">
                             </div>
                             <div class="input-group">
@@ -56,8 +56,11 @@
                             </div>
                         </div>
 
-                        <div class="form-group w-50">
+                        <div class="form-group w-50 mb-2">
                             <label for="main_image">{{ __('Add main image') }}</label>
+                            <div class="w-50 mb-3">
+                                <img src="{{ Storage::disk('public')->url($post->main_image) }}" alt="{{ __('Main image') }}" class="w-50">
+                            </div>
                             <div class="input-group">
                                 <div class="custom-file">
                                     <input type="file" class="custom-file-input" id="main_image" name="main_image">
@@ -74,7 +77,7 @@
                             <select class="form-control" name="category_id">
                                 @foreach ($categories as $category)
                                     <option value="{{ $category->id }}"
-                                        {{ $category->id == old('category_id') ? ' selected ' : '' }}
+                                        {{ $category->id == $post->category_id ? ' selected ' : '' }}
                                         >{{ $category->title }}</option>
                                 @endforeach
                             </select>
@@ -84,7 +87,7 @@
                             <label>{{ __('Tags') }}</label>
                             <select class="select2" name="tag_ids[]" multiple="multiple" data-placeholder="{{ __('Choose tags') }}" style="width: 100%;">
                                 @foreach ($tags as $tag)
-                                    <option {{ is_array(old('tag_ids')) && in_array($tag->id, old('tag_ids')) ? ' selected ' : '' }} value="{{ $tag->id }}">{{ $tag->title }}</option>
+                                    <option {{ in_array($tag->id, $post->tags->pluck('id')->toArray()) ? ' selected ' : '' }} value="{{ $tag->id }}">{{ $tag->title }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -99,7 +102,7 @@
                             </div>
                         @endif
                         <div class="form-group">
-                            <input type="submit" class="btn btn-primary" value="{{ __("Add") }}">
+                            <input type="submit" class="btn btn-primary" value="{{ __("Update") }}">
                         </div>
                     </form>
                 </div>
