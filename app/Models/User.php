@@ -16,6 +16,17 @@ class User extends Authenticatable
     use Notifiable;
     use SoftDeletes;
 
+    const ROLE_USER = 1;
+    const ROLE_ADMIN = 2;
+
+    public static function getRoles(): array
+    {
+        return [
+            self::ROLE_USER => __('User'),
+            self::ROLE_ADMIN => __('Admin'),
+        ];
+    }
+
     /**
      * The attributes that are mass assignable.
      *
@@ -25,6 +36,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
     ];
 
     /**

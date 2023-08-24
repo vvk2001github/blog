@@ -46,6 +46,17 @@
                             <input type="text" class="form-control" id="password" name="password" placeholder="{{ __('Enter password') }}" value="{{ old('password') }}">
                         </div>
 
+                        <div class="form-group">
+                            <label>{{ __('Choose role') }}</label>
+                            <select class="form-control" name="role">
+                                @foreach ($roles as $id => $role)
+                                    <option value="{{ $id }}"
+                                        {{ $id == old('role') ? ' selected ' : '' }}
+                                        >{{ $role }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
                         @if ($errors->any())
                             <div class="alert alert-danger">
                                 <ul>
