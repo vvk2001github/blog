@@ -7,6 +7,7 @@ use App\Http\Controllers\PostsController;
 use App\Http\Controllers\TagsController;
 use App\Http\Controllers\UsersController;
 use App\Http\Middleware\AdminMiddleware;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -27,10 +28,20 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::prefix('admin')->middleware(AdminMiddleware::class)->group(function () {
+Route::prefix('admin')->middleware([AdminMiddleware::class, 'verified'])->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin.index');
     Route::resource('categories', CategoriesController::class);
     Route::resource('tags', TagsController::class);
     Route::resource('posts', PostsController::class);
     Route::resource('users', UsersController::class);
 });
+
+Route::get('/email/verify', function () {
+    return "Подтвердите емайл";
+})->middleware('auth')->name('verification.notice');
+
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+
+    return redirect('/');
+})->middleware(['auth', 'signed'])->name('verification.verify');
