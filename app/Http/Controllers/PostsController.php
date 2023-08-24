@@ -7,13 +7,14 @@ use App\Http\Requests\Admin\Post\UpdateRequest;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
+use App\Service\PostService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
 
 class PostsController extends Controller
 {
-    public function __construct()
+    public function __construct(public PostService $postService)
     {
         $this->middleware('auth');
     }
@@ -45,20 +46,7 @@ class PostsController extends Controller
     public function store(StoreRequest $request): RedirectResponse
     {
         $data = $request->validated();
-
-        if (isset($data['tag_ids'])) {
-            $tag_ids = $data['tag_ids'];
-            unset($data['tag_ids']);
-        }
-
-        $data['preview_image'] = Storage::disk('public')->put('/images', $data['preview_image']);
-        $data['main_image'] = Storage::disk('public')->put('/images', $data['main_image']);
-        $data['user_id'] = auth()->user()->id;
-
-        $post = Post::firstOrCreate($data);
-        if (isset($tag_ids)) {
-            $post->tags()->attach($tag_ids);
-        }
+        $this->postService->store($data);
 
         return redirect()->route('posts.index');
     }
@@ -88,27 +76,7 @@ class PostsController extends Controller
     public function update(UpdateRequest $request, Post $post): RedirectResponse
     {
         $data = $request->validated();
-        if (isset($data['tag_ids'])) {
-            $tag_ids = $data['tag_ids'];
-            unset($data['tag_ids']);
-        }
-
-        if (isset($data['preview_image'])) {
-            $data['preview_image'] = Storage::disk('public')->put('/images', $data['preview_image']);
-        }
-
-        if (isset($data['main_image'])) {
-            $data['main_image'] = Storage::disk('public')->put('/images', $data['main_image']);
-        }
-
-        $data['user_id'] = auth()->user()->id;
-        $post->update($data);
-
-        if (isset($tag_ids)) {
-            $post->tags()->sync($tag_ids);
-        } else {
-            $post->tags()->sync(null);
-        }
+        $post = $this->postService->update($data, $post);
 
         return redirect()->route('posts.show', compact('post'));
     }
