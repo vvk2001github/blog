@@ -42,11 +42,6 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="password">{{ __('Password') }}</label>
-                            <input type="text" class="form-control" id="password" name="password" placeholder="{{ __('Enter password') }}" value="{{ old('password') }}">
-                        </div>
-
-                        <div class="form-group">
                             <label>{{ __('Choose role') }}</label>
                             <select class="form-control" name="role">
                                 @foreach ($roles as $id => $role)
