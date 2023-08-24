@@ -24,7 +24,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [MainController::class, 'index']);
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -36,12 +36,12 @@ Route::prefix('admin')->middleware([AdminMiddleware::class, 'verified'])->group(
     Route::resource('users', UsersController::class);
 });
 
-Route::get('/email/verify', function () {
-    return "Подтвердите емайл";
-})->middleware('auth')->name('verification.notice');
+// Route::get('/email/verify', function () {
+//     return "Подтвердите емайл";
+// })->middleware('auth')->name('verification.notice');
 
-Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
-    $request->fulfill();
+// Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+//     $request->fulfill();
 
-    return redirect('/');
-})->middleware(['auth', 'signed'])->name('verification.verify');
+//     return redirect('/');
+// })->middleware(['auth', 'signed'])->name('verification.verify');

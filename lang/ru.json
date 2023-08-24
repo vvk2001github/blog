@@ -33,5 +33,10 @@
     "Update": "Обновить",
     "Upload": "Загрузить",
     "User": "Пользователь",
-    "Users": "Пользователи"
+    "Users": "Пользователи",
+    "Verify Your Email Address": "Подтвердите свой адрес электронной почты",
+    "Before proceeding, please check your email for a verification link.": "Прежде чем продолжить, пожалуйста, проверьте свою электронную почту на наличие ссылки для подтверждения.",
+    "If you did not receive the email": "Если вы не получили электронное письмо",
+    "click here to request another": "нажмите здесь, чтобы запросить другой",
+    "A fresh verification link has been sent to your email address.": "На ваш адрес электронной почты была отправлена новая ссылка для подтверждения."
 }
