@@ -18,6 +18,7 @@ class User extends Authenticatable implements MustVerifyEmail
     use SoftDeletes;
 
     const ROLE_USER = 1;
+
     const ROLE_ADMIN = 2;
 
     public static function getRoles(): array

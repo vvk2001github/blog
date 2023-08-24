@@ -36,6 +36,7 @@ class UsersController extends Controller
     public function create(): View
     {
         $roles = User::getRoles();
+
         return view('admin.users.create', compact('roles'));
     }
 
@@ -50,6 +51,7 @@ class UsersController extends Controller
         $user = User::firstOrCreate(['email' => $data['email']], $data);
         Mail::to($data['email'])->send(new PasswordMail($password));
         event(new Registered($user));
+
         return redirect()->route('users.index');
     }
 
@@ -67,6 +69,7 @@ class UsersController extends Controller
     public function edit(User $user): View
     {
         $roles = User::getRoles();
+
         return view('admin.users.edit', compact('user', 'roles'));
     }
 
