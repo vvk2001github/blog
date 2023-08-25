@@ -6,6 +6,7 @@ use App\Http\Controllers\MainController;
 use App\Http\Controllers\Admin\PostsController;
 use App\Http\Controllers\Admin\TagsController;
 use App\Http\Controllers\Admin\UsersController;
+use App\Http\Controllers\Personal\PersonalController;
 use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -35,12 +36,8 @@ Route::prefix('admin')->middleware([AdminMiddleware::class, 'verified'])->group(
     Route::resource('users', UsersController::class);
 });
 
-// Route::get('/email/verify', function () {
-//     return "Подтвердите емайл";
-// })->middleware('auth')->name('verification.notice');
-
-// Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
-//     $request->fulfill();
-
-//     return redirect('/');
-// })->middleware(['auth', 'signed'])->name('verification.verify');
+Route::prefix('personal')->middleware('verified')->group(function () {
+    Route::get('/', [PersonalController::class, 'index'])->name('personal.index');
+    Route::get('/liked', [PersonalController::class, 'liked'])->name('personal.liked');
+    Route::get('/comment', [PersonalController::class, 'comment'])->name('personal.comment');
+});
