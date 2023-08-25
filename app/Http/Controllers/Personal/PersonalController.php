@@ -15,13 +15,10 @@ class PersonalController extends Controller
         $this->middleware('auth');
     }
 
-    public function deleteLiked(Post $post): \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
+    public function comment(): View
     {
-        /** @var \App\Models\User $user * */
-        $user = auth()->user();
-        $user->likedPosts()->detach($post->id);
-
-        return redirect()->route('personal.liked');
+        $comments = auth()->user()->comments;
+        return view('personal.comment.index', compact('comments'));
     }
 
     public function commentDelete(Comment $comment): \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
@@ -54,9 +51,13 @@ class PersonalController extends Controller
         return view('personal.liked', compact('posts'));
     }
 
-    public function comment(): View
+    public function likedDelete(Post $post): \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
     {
-        $comments = auth()->user()->comments;
-        return view('personal.comment.index', compact('comments'));
+        /** @var \App\Models\User $user * */
+        $user = auth()->user();
+        $user->likedPosts()->detach($post->id);
+
+        return redirect()->route('personal.liked');
     }
+
 }
