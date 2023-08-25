@@ -26,15 +26,21 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('main.index') }}">{{ __('Blog') }}</a>
                         </li>
-                        <li class="nav-item">
-                            @auth
+                        @auth
+                            <li class="nav-item">
                                 <a class="nav-link" href="{{ route('personal.index') }}">{{ __('Personal account') }}</a>
-                            @endauth
+                            </li>
+                            @if(auth()->user()->role === App\Models\User::ROLE_ADMIN)
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('admin.index') }}">{{ __('Dashboard') }}</a>
+                                </li>
+                            @endif
+                        @endauth
                             @guest
-                                <a class="nav-link" href="{{ route('personal.index') }}">{{ __('Login') }}</a>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('personal.index') }}">{{ __('Login') }}</a>
+                                </li>
                             @endguest
-
-                        </li>
                     </ul>
                 </div>
             </nav>
