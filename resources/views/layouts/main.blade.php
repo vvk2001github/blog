@@ -17,7 +17,7 @@
     <header class="edica-header">
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light">
-                <a class="navbar-brand" href="index.html"><img src="assets/images/logo.svg" alt="Edica"></a>
+                <a class="navbar-brand" href="{{ route('main.index') }}"><img src="{{ asset('assets/images/logo.svg') }}" alt="Edica"></a>
                 <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#edicaMainNav" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -39,16 +39,15 @@
         <div class="container">
             <div class="row footer-widget-area">
                 <div class="col-md-3">
-                    <a href="index.html" class="footer-brand-wrapper">
-                        <img src="assets/images/logo.svg" alt="edica logo">
+                    <a href="{{ route('main.index') }}" class="footer-brand-wrapper">
+                        <img src="{{ asset('assets/images/logo.svg') }}" alt="edica logo">
                     </a>
                     <p class="contact-details">hello@edica.com</p>
                     <p class="contact-details">+23 3000 000 00</p>
                     <nav class="footer-social-links">
-                        <a href="#!"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#!"><i class="fab fa-twitter"></i></a>
-                        <a href="#!"><i class="fab fa-behance"></i></a>
-                        <a href="#!"><i class="fab fa-dribbble"></i></a>
+                        <a href="#!"><i class="fab fa-vk"></i></a>
+                        <a href="#!"><i class="fab fa-telegram"></i></a>
+                        <a href="#!"><i class="fab fa-odnoklassniki"></i></a>
                     </nav>
                 </div>
                 <div class="col-md-3">

@@ -13,7 +13,7 @@
                             <img src="{{ Storage::url($post->preview_image) }}" alt="blog post">
                         </div>
                         <p class="blog-post-category">{{ $post->category->title }}</p>
-                        <a href="#!" class="blog-post-permalink">
+                        <a href="{{ route('post.show', $post) }}" class="blog-post-permalink">
                             <h6 class="blog-post-title">{{ $post->title }}</h6>
                         </a>
                     </div>
@@ -38,7 +38,7 @@
                                     <img src="{{ Storage::url($randomPost->preview_image) }}" alt="blog post">
                                 </div>
                                 <p class="blog-post-category">{{ $randomPost->category->title }}</p>
-                                <a href="#!" class="blog-post-permalink">
+                                <a href="{{ route('post.show', $randomPost) }}" class="blog-post-permalink">
                                     <h6 class="blog-post-title">{{ $randomPost->title }}</h6>
                                 </a>
                             </div>
@@ -52,7 +52,7 @@
                     <ul class="post-list">
                         @foreach ($likedPosts as $likedPost)
                             <li class="post">
-                                <a href="#!" class="post-permalink media">
+                                <a href="{{ route('post.show', $likedPost) }}" class="post-permalink media">
                                     <img src="{{ Storage::url($likedPost->preview_image) }}" alt="blog post">
                                     <div class="media-body">
                                         <h6 class="post-title">{{ $likedPost->title }}</h6>

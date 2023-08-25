@@ -9,7 +9,7 @@ class MainController extends Controller
 {
     public function index(): View
     {
-        $posts = Post::paginate(6);
+        $posts = Post::orderBy('created_at', 'DESC')->paginate(6);
         $randomPosts = Post::inRandomOrder()
             ->limit(4)
             ->get();

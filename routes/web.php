@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\TagsController;
 use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\Personal\PersonalController;
+use App\Http\Controllers\Post\PostController;
 use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -44,4 +45,8 @@ Route::prefix('personal')->middleware('verified')->group(function () {
     Route::get('/comment/{comment}', [PersonalController::class, 'commentEdit'])->name('personal.comment.edit');
     Route::patch('/comment/{comment}', [PersonalController::class, 'commentUpdate'])->name('personal.comment.update');
     Route::get('/comment', [PersonalController::class, 'comment'])->name('personal.comment.index');
+});
+
+Route::prefix('posts')->group(function () {
+    Route::get('/{post}', [PostController::class, 'show'])->name('post.show');
 });
