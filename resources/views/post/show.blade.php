@@ -31,9 +31,29 @@
                             @endforeach
                         </div>
                     </section>
+                    <section class="comment-list mb-5">
+                        <h2 class="section-title mb-5" data-aos="fade-up">{{ __('Comments') }} ({{ $post->comments->count() }})</h2>
+                        @foreach ($post->comments as $comment)
+
+                            <div class="comment-text mb-3">
+                                <span class="username">
+                                    <div>
+                                        {{ $comment->user->name }}
+                                    </div>
+                                    <span class="text-muted float-right">{{ $comment->created_time }}</span>
+                                </span><!-- /.username -->
+                                {{ $comment->message }}
+                            </div>
+
+                        @endforeach
+                    </section>
+
                     <section class="comment-section">
+                        @auth
+
                         <h2 class="section-title mb-5" data-aos="fade-up">{{ __('Leave a Reply') }}</h2>
-                        <form action="/" method="post">
+                        <form action="{{ route('post.comment.store', $post) }}" method="post">
+                            @csrf
                             <div class="row">
                                 <div class="form-group col-12" data-aos="fade-up">
                                 <label for="message" class="sr-only">{{ __('Comment') }}</label>
@@ -42,10 +62,11 @@
                             </div>
                             <div class="row">
                                 <div class="col-12" data-aos="fade-up">
-                                    <input type="submit" value="Send Message" class="btn btn-warning">
+                                    <input type="submit" value="{{ __('Send') }}" class="btn btn-warning">
                                 </div>
                             </div>
                         </form>
+                        @endauth
                     </section>
                 </div>
             </div>

@@ -49,4 +49,7 @@ Route::prefix('personal')->middleware('verified')->group(function () {
 
 Route::prefix('posts')->group(function () {
     Route::get('/{post}', [PostController::class, 'show'])->name('post.show');
+    Route::prefix('{post}/comments')->group(function () {
+        Route::post('/', [PostController::class, 'commentStore'])->name('post.comment.store');
+    });
 });

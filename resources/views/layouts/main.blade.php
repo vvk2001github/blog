@@ -26,6 +26,15 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('main.index') }}">{{ __('Blog') }}</a>
                         </li>
+                        <li class="nav-item">
+                            @auth
+                                <a class="nav-link" href="{{ route('personal.index') }}">{{ __('Personal account') }}</a>
+                            @endauth
+                            @guest
+                                <a class="nav-link" href="{{ route('personal.index') }}">{{ __('Login') }}</a>
+                            @endguest
+
+                        </li>
                     </ul>
                 </div>
             </nav>
@@ -104,7 +113,7 @@
         AOS.init({
             duration: 1000
         });
-      </script>
+    </script>
 </body>
 
 </html>
