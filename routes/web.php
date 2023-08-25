@@ -2,10 +2,10 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoriesController;
-use App\Http\Controllers\MainController;
 use App\Http\Controllers\Admin\PostsController;
 use App\Http\Controllers\Admin\TagsController;
 use App\Http\Controllers\Admin\UsersController;
+use App\Http\Controllers\MainController;
 use App\Http\Controllers\Personal\PersonalController;
 use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Auth;
@@ -39,5 +39,6 @@ Route::prefix('admin')->middleware([AdminMiddleware::class, 'verified'])->group(
 Route::prefix('personal')->middleware('verified')->group(function () {
     Route::get('/', [PersonalController::class, 'index'])->name('personal.index');
     Route::get('/liked', [PersonalController::class, 'liked'])->name('personal.liked');
+    Route::delete('/liked/{post}', [PersonalController::class, 'deleteLiked'])->name('personal.liked.delete');
     Route::get('/comment', [PersonalController::class, 'comment'])->name('personal.comment');
 });

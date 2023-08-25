@@ -22,6 +22,7 @@ class AdminController extends Controller
         $postsCount = Post::all()->count();
         $categoriesCount = Category::all()->count();
         $tagsCount = Tag::all()->count();
+
         return view('admin.index', compact('usersCount', 'postsCount', 'categoriesCount', 'tagsCount'));
     }
 }
