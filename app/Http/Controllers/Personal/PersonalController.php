@@ -18,12 +18,14 @@ class PersonalController extends Controller
     public function comment(): View
     {
         $comments = auth()->user()->comments;
+
         return view('personal.comment.index', compact('comments'));
     }
 
     public function commentDelete(Comment $comment): \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
     {
         $comment->delete();
+
         return redirect()->route('personal.comment.index');
     }
 
@@ -36,6 +38,7 @@ class PersonalController extends Controller
     {
         $data = $request->validated();
         $comment->update($data);
+
         return redirect()->route('personal.comment.index');
     }
 
@@ -59,5 +62,4 @@ class PersonalController extends Controller
 
         return redirect()->route('personal.liked');
     }
-
 }

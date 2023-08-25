@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Casts\Attribute;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -21,14 +21,15 @@ class Post extends Model
     private function createdAtForPostShow(): string
     {
         $result_carbon = Carbon::parse($this->created_at);
-        $result = mb_convert_case($result_carbon->translatedFormat('F'), MB_CASE_TITLE) . ' ' . $result_carbon->day .', ' . $result_carbon->year . ' ' . $result_carbon->format('H:i');
+        $result = mb_convert_case($result_carbon->translatedFormat('F'), MB_CASE_TITLE).' '.$result_carbon->day.', '.$result_carbon->year.' '.$result_carbon->format('H:i');
+
         return $result;
     }
 
     protected function createdDate(): Attribute
     {
         return Attribute::make(
-            get: fn() => $this->createdAtForPostShow(),
+            get: fn () => $this->createdAtForPostShow(),
         );
     }
 
@@ -51,5 +52,4 @@ class Post extends Model
     {
         return $this->hasMany(Comment::class);
     }
-
 }

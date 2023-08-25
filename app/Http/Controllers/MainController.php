@@ -17,6 +17,7 @@ class MainController extends Controller
             ->orderBy('liked_users_count', 'DESC')
             ->limit(4)
             ->get();
+
         return view('main.index', compact('posts', 'randomPosts', 'likedPosts'));
     }
 }
