@@ -40,5 +40,8 @@ Route::prefix('personal')->middleware('verified')->group(function () {
     Route::get('/', [PersonalController::class, 'index'])->name('personal.index');
     Route::get('/liked', [PersonalController::class, 'liked'])->name('personal.liked');
     Route::delete('/liked/{post}', [PersonalController::class, 'deleteLiked'])->name('personal.liked.delete');
-    Route::get('/comment', [PersonalController::class, 'comment'])->name('personal.comment');
+    Route::delete('/comment/{comment}', [PersonalController::class, 'commentDelete'])->name('personal.comment.delete');
+    Route::get('/comment/{comment}', [PersonalController::class, 'commentEdit'])->name('personal.comment.edit');
+    Route::patch('/comment/{comment}', [PersonalController::class, 'commentUpdate'])->name('personal.comment.update');
+    Route::get('/comment', [PersonalController::class, 'comment'])->name('personal.comment.index');
 });

@@ -53,7 +53,7 @@
               <div class="icon">
                 <i class="far fa-comment"></i>
               </div>
-              <a href="{{ route('personal.comment') }}" class="small-box-footer">{{ __('More info') }} <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{ route('personal.comment.index') }}" class="small-box-footer">{{ __('More info') }} <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->

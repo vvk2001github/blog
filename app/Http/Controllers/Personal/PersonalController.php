@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Personal;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Personal\Comment\UpdateRequest;
+use App\Models\Comment;
 use App\Models\Post;
 use Illuminate\Contracts\View\View;
 
@@ -22,6 +24,24 @@ class PersonalController extends Controller
         return redirect()->route('personal.liked');
     }
 
+    public function commentDelete(Comment $comment): \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
+    {
+        $comment->delete();
+        return redirect()->route('personal.comment.index');
+    }
+
+    public function commentEdit(Comment $comment)
+    {
+        return view('personal.comment.edit', compact('comment'));
+    }
+
+    public function commentUpdate(UpdateRequest $request, Comment $comment)
+    {
+        $data = $request->validated();
+        $comment->update($data);
+        return redirect()->route('personal.comment.index');
+    }
+
     public function index(): View
     {
         return view('personal.index');
@@ -36,6 +56,7 @@ class PersonalController extends Controller
 
     public function comment(): View
     {
-        return view('personal.comment');
+        $comments = auth()->user()->comments;
+        return view('personal.comment.index', compact('comments'));
     }
 }
