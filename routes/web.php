@@ -1,13 +1,12 @@
 <?php
 
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\MainController;
-use App\Http\Controllers\PostsController;
-use App\Http\Controllers\TagsController;
-use App\Http\Controllers\UsersController;
+use App\Http\Controllers\Admin\PostsController;
+use App\Http\Controllers\Admin\TagsController;
+use App\Http\Controllers\Admin\UsersController;
 use App\Http\Middleware\AdminMiddleware;
-use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
