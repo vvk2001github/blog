@@ -24,6 +24,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [MainController::class, 'index'])->name('main.index');
+Route::prefix('categories')->group(function () {
+    Route::get('/{category}', [MainController::class, 'categoryShow'])->name('main.categories.show');
+    Route::get('/', [MainController::class, 'categories'])->name('main.categories.index');
+});
 
 Auth::routes(['verify' => true]);
 

@@ -26,6 +26,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('main.index') }}">{{ __('Blog') }}</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('main.categories.index') }}">{{ __('Categories') }}</a>
+                        </li>
                         @auth
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('personal.index') }}">{{ __('Personal account') }}</a>

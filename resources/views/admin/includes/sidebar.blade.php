@@ -8,8 +8,16 @@
             <!-- Add icons to the links using the .nav-icon class
                 with font-awesome or any other icon font library -->
                 <li class="nav-item">
-                    <a href="{{ route('admin.index') }}" class="nav-link">
+                    <a href="{{ route('main.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-home"></i>
+                        <p>
+                            {{ __('Main page') }}
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-tools"></i>
                         <p>
                             {{ __('Dashboard') }}
                         </p>
