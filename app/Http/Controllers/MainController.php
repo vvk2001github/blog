@@ -25,8 +25,10 @@ class MainController extends Controller
     public function categories(): View
     {
         $categories = Category::orderBy('title')->paginate(3);
+
         return view('main.categories.index', compact('categories'));
     }
+
     public function categoryShow(Category $category): View
     {
         $posts = $category->posts()->paginate(3);
