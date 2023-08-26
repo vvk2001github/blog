@@ -13,7 +13,7 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{ route('personal.index') }}">{{ __('Main page') }}</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('personal.index') }}">{{ __('Personal account') }}</a></li>
                         <li class="breadcrumb-item active">{{ __('Liked posts') }}</li>
                     </ol>
                 </div><!-- /.col -->
@@ -45,7 +45,7 @@
                                             <td>{{ $post->id }}</td>
                                             <td>{{ $post->title }}</td>
                                             <td class="text-center">
-                                                <a href="{{ route('posts.show', $post) }}">
+                                                <a href="{{ route('post.show', $post) }}">
                                                     <i class="far fa-eye"></i>
                                                 </a>
                                             </td>

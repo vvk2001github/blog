@@ -13,7 +13,7 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{ route('personal.index') }}">{{ __('Main page') }}</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('personal.index') }}">{{ __('Personal account') }}</a></li>
                         <li class="breadcrumb-item active">{{ __('Comment') }}</li>
                     </ol>
                 </div><!-- /.col -->
