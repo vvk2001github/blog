@@ -18,6 +18,8 @@ class Post extends Model
 
     protected $guarded = false;
 
+    protected $withCount = ['likedUsers'];
+
     private function createdAtForPostShow(): string
     {
         $result_carbon = Carbon::parse($this->created_at);

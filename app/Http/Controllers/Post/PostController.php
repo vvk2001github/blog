@@ -21,7 +21,7 @@ class PostController extends Controller
         return view('post.show', compact('post'), compact('relatedPosts'));
     }
 
-    public function commentStore(Post $post, StoreRequest $request)
+    public function commentStore(Post $post, StoreRequest $request): \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
     {
         $data = $request->validated();
         $data['post_id'] = $post->id;
@@ -30,5 +30,14 @@ class PostController extends Controller
         Comment::create($data);
 
         return redirect()->route('post.show', $post);
+    }
+
+    public function likeStore(Post $post): \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
+    {
+        /** @var \App\Models\User $user * */
+        $user = auth()->user();
+        $user->likedPosts()->toggle($post);
+
+        return redirect()->back();
     }
 }
