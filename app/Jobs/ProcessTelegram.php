@@ -9,12 +9,13 @@ use Illuminate\Http\Client\Response;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 class ProcessTelegram implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    private const TELEGRAM_URL = 'https://api.telegram.org/bot';
+    public const TELEGRAM_URL = 'https://api.telegram.org/bot';
 
     /**
      * Create a new job instance.
