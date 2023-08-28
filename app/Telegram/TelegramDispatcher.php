@@ -9,7 +9,7 @@ class TelegramDispatcher
     public function sendMessage(string $message, string $chatID = null)
     {
         if (! isset($chatID)) {
-            $chatID = env('TELEGRAM_CHAT_ID');
+            $chatID = config('telegram.telegram_chat_id');
         }
 
         ProcessTelegram::dispatch($message, $chatID);

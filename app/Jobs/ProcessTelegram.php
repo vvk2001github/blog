@@ -30,7 +30,7 @@ class ProcessTelegram implements ShouldQueue
     public function handle(): Response
     {
         // $url = self::TELEGRAM_URL.env('TELEGRAM_BOT_TOKEN').'/sendMessage?chat_id'.$this->chatID.'&text='.$this->message.'?parse_mode=html';
-        $url = self::TELEGRAM_URL.env('TELEGRAM_BOT_TOKEN').'/sendMessage';
+        $url = self::TELEGRAM_URL.config('telegram.telegram_bot_token').'/sendMessage';
 
         return Http::post($url, [
             'chat_id' => $this->chatID,
