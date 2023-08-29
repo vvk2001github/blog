@@ -48,7 +48,7 @@
                                     @foreach ($posts as $post)
                                         <tr>
                                             <td>{{ $post->id }}</td>
-                                            <td>{{ $post->title }}</td>
+                                            <td>{{ Str::limit($post->title, 90) }}</td>
                                             <td class="text-center">
                                                 <a href="{{ route('posts.show', $post) }}">
                                                     <i class="far fa-eye"></i>

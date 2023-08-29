@@ -89,19 +89,7 @@
                     </nav>
                 </div>
                 <div class="col-md-3">
-                    <div class="dropdown footer-country-dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="footerCountryDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="flag-icon flag-icon-gb flag-icon-squared"></span> United Kingdom <i class="fas fa-chevron-down ml-2"></i>
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="footerCountryDropdown">
-                            <button class="dropdown-item" href="#">
-                                <span class="flag-icon flag-icon-us flag-icon-squared"></span> United States
-                            </button>
-                            <button class="dropdown-item" href="#">
-                                <span class="flag-icon flag-icon-au flag-icon-squared"></span> Australia
-                            </button>
-                        </div>
-                    </div>
+
                 </div>
             </div>
             <div class="footer-bottom-content">

@@ -23,11 +23,10 @@
 @task('artisan', ['on' => 'blog'])
     cd {{ $dir }}
     php artisan migrate --force
-    php artisan storage:link
-    php artisan clear-compiled
-    php artisan optimize
     php artisan config:cache
-    php artisan cache:clear
+    php artisan event:cache
+    php artisan route:cache
+    php artisan view:cache
 @endtask
 
 @story('deploy')
