@@ -29,7 +29,7 @@ Route::prefix('categories')->group(function () {
     Route::get('/', [MainController::class, 'categories'])->name('main.categories.index');
 });
 
-Auth::routes(['verify' => true]);
+Auth::routes(['verify' => true, 'register' => config('registration.is_registration_available')]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
