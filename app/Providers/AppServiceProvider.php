@@ -22,6 +22,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Paginator::useBootstrapFour();
-        Model::shouldBeStrict(app()->environment('production'));
+        // Model::shouldBeStrict(!app()->environment('production'));
+        Model::shouldBeStrict(! app()->isProduction());
     }
 }
