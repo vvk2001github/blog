@@ -16,6 +16,7 @@ class PostController extends Controller
             ->where('id', '!=', $post->id)
             ->inRandomOrder()
             ->limit(3)
+            ->with('category')
             ->get();
 
         return view('post.show', compact('post'), compact('relatedPosts'));

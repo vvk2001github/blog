@@ -10,8 +10,8 @@ class MainController extends Controller
 {
     public function index(): View
     {
-        $posts = Post::orderBy('created_at', 'DESC')->paginate(6);
-        $randomPosts = Post::inRandomOrder()
+        $posts = Post::orderBy('created_at', 'DESC')->with('category')->paginate(6);
+        $randomPosts = Post::inRandomOrder()->with('category')
             ->limit(4)
             ->get();
         $likedPosts = Post::withCount('likedUsers')
